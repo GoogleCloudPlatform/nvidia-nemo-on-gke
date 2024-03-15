@@ -30,7 +30,7 @@ gcsDownload: # downloads or synchronizes contents of a GCS bucket folder on init
 workload:
   image: ""
   torchDistributedTarget: "/opt/NeMo/examples/nlp/language_modeling/megatron_gpt_pretraining.py"
-
+  # torchDistributedTarget: "/workspace/nemo/examples/nlp/language_modeling/megatron_gpt_pretraining.py"
   gpus: 8 # This should be one of: {<= 8,  multiple of 8}
   arguments: 
   # These argument name will be prefixed with '+' (see https://hydra.cc/docs/advanced/override_grammar/basic/)

@@ -24,7 +24,7 @@ variable "training_image_name" {
   type        = string
   description = "NVIDIA NeMo Training Framework image URL"
   nullable    = false
-  default     = "nvcr.io/nvidia/nemo:23.11.framework"
+  default     = "nvcr.io/nvidia/nemo:23.06"
 }
 
 variable "kueue_name" {

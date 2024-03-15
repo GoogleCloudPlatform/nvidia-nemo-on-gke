@@ -302,9 +302,7 @@ spec:
         echo "Pod is assigned job index of $JOB_COMPLETION_INDEX"
         echo "Job ID is $JOB_IDENTIFIER"
 
-        # export LD_LIBRARY_PATH="/usr/local/tcpx/lib64:${LD_LIBRARY_PATH}"
-        export LD_LIBRARY_PATH="/usr/local/cuda/lib64/:/lib/x86_64-linux-gnu/:/usr/local/tcpx/lib64:$LD_LIBRARY_PATH"
-        # sleep infinity
+        export LD_LIBRARY_PATH="/usr/local/tcpx/lib64:${LD_LIBRARY_PATH}"
         echo "Warning: Set LD_LIBRARY_PATH=$LD_LIBRARY_PATH to override the NCCL library"
 
         touch $SSD_MOUNT_PATH/hello-from-$HOSTNAME.txt

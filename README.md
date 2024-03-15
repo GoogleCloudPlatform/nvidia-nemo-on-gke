@@ -22,7 +22,7 @@ This repository contains an end-to-end walkthrough of training NVIDIA's NeMo Meg
     - [Launch training using Helm](#launch-training-using-helm)
   - [Observations](#observations)
     - [TensorBoard using Open-source](#tensorboard-using-open-source)
-    - [TensorBoard using Vertex AI)](#tensorboard-using-vertex-ai)
+    - [TensorBoard using Vertex AI](#tensorboard-using-vertex-ai)
     - [Dashboard - Scalars](#dashboard---scalars)
       - [Reduced Train Loss](#reduced-train-loss)
       - [Train Step Timing](#train-step-timing)
@@ -287,7 +287,7 @@ Below are the details of dataset used for training.
 
 #### Training Image
 
-The latest NVIDIA NeMo Framework Training image available at [NGC Catalog](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/nemo) is used. At the time of this publishing, the current version is `nvcr.io/nvidia/nemo:23.11.framework`
+The latest NVIDIA NeMo Framework Training image available at [NGC Catalog](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/nemo) is used. At the time of this publishing, the current version is `nvcr.io/nvidia/nemo:23.06`
 
 #### Configure model parameters
 
@@ -305,7 +305,7 @@ Launch the GPT model training across the desired nodes
   | Variable | Description | Default | Need update? |
   |---|---|---|---|
   | `workload.gpus` | Total number of GPUs | `16` | *Optional* |
-  | `workload.image` | Image version for NeMo training | `nvcr.io/nvidia/nemo:23.11.framework` | *Optional* |
+  | `workload.image` | Image version for NeMo training | `nvcr.io/nvidia/nemo:23.06` | *Optional* |
   | `queue` | LocalQueue name that submits to ClusterQueue | `a3-queue` | *a3-queue* |
 
   Launch Helm workload
@@ -313,7 +313,7 @@ Launch the GPT model training across the desired nodes
   ```console
   cd nemo-example/
   helm install --set workload.gpus=16 \
-  --set workload.image=nvcr.io/nvidia/nemo:23.11.framework \
+  --set workload.image=nvcr.io/nvidia/nemo:23.06 \
   --set queue=a3-queue \
   $USER-nemo-$(date +%s) .
   ```
@@ -324,7 +324,7 @@ Alternatively, you can launch training using terraform
 
   | Variable | Description | Default | Need update? |
   |---|---|---|---|
-  | `training_image_name` | NVIDIA NeMo Framework Image | `nvcr.io/nvidia/nemo:23.11.framework` | *Optional* |
+  | `training_image_name` | NVIDIA NeMo Framework Image | `nvcr.io/nvidia/nemo:23.06` | *Optional* |
   | `kueue_name` | LocalQueue name that submits to ClusterQueue | `a3-queue` | *Optional* |
 
   Save changes in the `terraform.auto.tfvars` file
