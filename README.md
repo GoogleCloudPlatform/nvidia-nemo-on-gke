@@ -22,7 +22,7 @@ This repository contains an end-to-end walkthrough of training NVIDIA's NeMo Meg
     - [Launch training using Helm](#launch-training-using-helm)
   - [Observations](#observations)
     - [TensorBoard using Open-source](#tensorboard-using-open-source)
-    - [TensorBoard using Vertex AI)](#tensorboard-using-vertex-ai)
+    - [TensorBoard using Vertex AI](#tensorboard-using-vertex-ai)
     - [Dashboard - Scalars](#dashboard---scalars)
       - [Reduced Train Loss](#reduced-train-loss)
       - [Train Step Timing](#train-step-timing)
