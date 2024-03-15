@@ -1,0 +1,9 @@
+# Local .terraform directories
+**/.terraform/*
+
+*.tfstate
+*.tfstate.*
+*.terraform.lock.hcl
+**venv*
+.DS_Store
+**/kueue_v*.yaml

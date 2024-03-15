@@ -1,0 +1,51 @@
+#  Copyright 2024 Google LLC
+
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+
+#       https://www.apache.org/licenses/LICENSE-2.0
+
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+
+apiVersion: kueue.x-k8s.io/v1beta1
+kind: ResourceFlavor
+metadata:
+  name: a3-pool
+spec:
+  nodeLabels:
+    node.kubernetes.io/instance-type: a3-highgpu-8g
+  tolerations:
+    - key: nvidia.com/gpu
+      operator: Exists
+      effect: NoSchedule
+---
+apiVersion: kueue.x-k8s.io/v1beta1
+kind: LocalQueue
+metadata:
+  namespace: "default"
+  name: LOCAL_QUEUE_NAME
+spec:
+  clusterQueue: CLUSTER_QUEUE_NAME
+---
+apiVersion: kueue.x-k8s.io/v1beta1
+kind: ClusterQueue
+metadata:
+  name: CLUSTER_QUEUE_NAME
+spec:
+  namespaceSelector: {} # match all.
+  queueingStrategy: BestEffortFIFO
+  preemption:
+    withinClusterQueue: LowerOrNewerEqualPriority
+  resourceGroups:
+  - coveredResources: ["nvidia.com/gpu"]
+    flavors:
+    - name: "a3-pool"
+      resources:
+      - name: "nvidia.com/gpu"
+        nominalQuota: GPU_COUNT
+---        

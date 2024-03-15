@@ -1,0 +1,97 @@
+#  Copyright 2024 Google LLC
+
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+
+#       https://www.apache.org/licenses/LICENSE-2.0
+
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tensorboard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tensorboard
+  template:
+    metadata:
+      labels:
+        app: tensorboard
+    spec:
+      volumes:
+      - name: cluster-filestore
+        persistentVolumeClaim:
+          claimName: cluster-filestore
+      containers:
+      - name: tensorboard
+        image: us-docker.pkg.dev/llm-containers/nemo-megatron-demo/tensorboard
+        command: 
+        - bash
+        - -c
+        - |
+          tensorboard --logdir /nfs/nemo-experiments
+
+        ports:
+        - name: web
+          containerPort: 6006
+        volumeMounts:
+        - name: cluster-filestore
+          mountPath: /nfs 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tensorboard
+spec:
+  clusterIP: None
+  selector:
+    app: tensorboard
+  ports:
+  - name: web
+    port: 6006
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: inverse-proxy
+spec:
+  serviceAccountName: default
+  containers:
+  - name: inverse-proxy
+    image: us-docker.pkg.dev/llm-containers/nemo-megatron-demo/inverse-proxy
+    ports:
+    - containerPort: 80
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: inverse-proxy-config
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: inverse-proxy-role
+rules:
+- apiGroups: [""]
+  resources: ["configmaps"]
+  verbs: ["get", "list", "create", "update", "patch", "delete"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: inverse-proxy-role-binding
+subjects:
+- kind: ServiceAccount
+  name: default
+roleRef:
+  kind: Role
+  name: inverse-proxy-role
+  apiGroup: rbac.authorization.k8s.io
