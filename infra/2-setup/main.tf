@@ -23,6 +23,7 @@ data "terraform_remote_state" "bootstrap" {
 }
 
 data "google_project" "current" {
+  project_id = data.terraform_remote_state.bootstrap.outputs.project_id
 }
 
 locals {

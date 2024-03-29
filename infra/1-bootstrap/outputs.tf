@@ -23,3 +23,8 @@ output "region" {
   description = "GCS Bucket region"
   value = var.tf_state_bucket.location
 }
+
+output "project_id" {
+  description = "Project ID"
+  value = var.project_id
+}
