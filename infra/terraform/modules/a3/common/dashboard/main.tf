@@ -81,7 +81,7 @@ data "http" "nvidia-nvml" {
 }
 
 module "dashboard" {
-  source = "github.com/GoogleCloudPlatform/hpc-toolkit//modules/monitoring/dashboard/?ref=v1.34.1"
+  source = "github.com/GoogleCloudPlatform/hpc-toolkit//modules/monitoring/dashboard/?ref=v1.34.3"
 
   base_dashboard  = "Empty"
   deployment_name = var.resource_prefix
