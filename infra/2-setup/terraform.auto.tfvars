@@ -14,10 +14,10 @@
  limitations under the License.
  */
 
-zone       = "<GCP Zone>"
-cluster_prefix         = "<GKE Cluster name>"
+zone       = "us-central1-a"
+cluster_prefix         = "nemo-cluster"
 gke_version = "1.27.8-gke.1067004"
 
-node_count             = 2
+node_count             = 1
 nodepool_default_count = 1
 nodepool_default_type  = "e2-standard-4"
