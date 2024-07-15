@@ -14,11 +14,11 @@
  limitations under the License.
  */
 
-project_id = "<GCP Project ID>"
+project_id = "	qwiklabs-gcp-00-abe022404db7"
 
 tf_state_bucket = {
-  name     = "<GCS Bucket for terraform state mgmt>"
-  location = "<GCP Region>"
+  name     = "	qwiklabs-gcp-00-abe022404db7-tf-state"
+  location = "us-central1"
 }
 
 deletion_protection = true
