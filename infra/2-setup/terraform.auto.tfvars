@@ -14,7 +14,7 @@
  limitations under the License.
  */
 
-zone       = "us-central1-a"
+zone       = "us-east4-a"
 cluster_prefix         = "nemo-cluster"
 gke_version = "1.27.13-gke.1070002"
 
