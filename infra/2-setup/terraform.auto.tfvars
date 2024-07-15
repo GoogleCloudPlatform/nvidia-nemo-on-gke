@@ -16,7 +16,7 @@
 
 zone       = "us-central1-a"
 cluster_prefix         = "nemo-cluster"
-gke_version = "1.27.8-gke.1067004"
+gke_version = "1.27.13-gke.1070002"
 
 node_count             = 1
 nodepool_default_count = 1
