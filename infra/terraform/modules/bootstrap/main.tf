@@ -32,6 +32,7 @@ locals {
     "logging.googleapis.com",
     "stackdriver.googleapis.com",
     "storage.googleapis.com",
+    "firestore.googleapis.com",
   ]
   services = concat(local.default_services, var.services)
 }
