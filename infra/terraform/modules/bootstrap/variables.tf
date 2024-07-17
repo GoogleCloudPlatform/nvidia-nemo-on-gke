@@ -39,6 +39,6 @@ variable "services" {
 variable "deletion_protection" {
   description = "Prevent Terraform from destroying data storage resources (storage buckets, GKE clusters). When this field is set, a terraform destroy or terraform apply that would delete data storage resources will fail."
   type        = bool
-  default     = true
+  default     = false
   nullable    = false
 }

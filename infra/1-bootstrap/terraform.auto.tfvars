@@ -18,7 +18,5 @@ project_id = "qwiklabs-gcp-00-abe022404db7"
 
 tf_state_bucket = {
   name     = "qwiklabs-gcp-00-abe022404db7-tf-state"
-  location = "us-central1"
+  location = "us-east4"
 }
-
-deletion_protection = true
