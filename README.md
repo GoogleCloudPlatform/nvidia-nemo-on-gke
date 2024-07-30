@@ -102,6 +102,14 @@ The following CLI tools are required in order to complete the walkthrough in you
     - Install [NGC CLI](https://docs.ngc.nvidia.com/cli/cmd.html)
     - [NGC Big NLP Training Docker images](https://registry.ngc.nvidia.com/orgs/ea-bignlp/containers/bignlp-training)
 
+## Enabling AI Infrastructure for Regulated Organizations
+
+Google Cloud’s ]Assured Workloads](https://cloud.google.com/security/products/assured-workloads?e=48754805&hl=en) helps ensure that regulated organizations across the public and private sector can accelerate AI innovation while meeting their compliance and security requirements. Assured Workloads provides control packages to support the creation of compliant boundaries in Google Cloud. A control package is a set of controls that, when combined together, supports the regulatory baseline for a compliance statute or regulation. These controls include mechanisms to enforce data residency, data sovereignty, personnel access, and more.
+
+We encourage you to evaluate Assured Workloads' [control packages](https://cloud.google.com/assured-workloads/docs/control-packages) and decide whether a control package is required for your organization to meet their regulatory and compliance requirements. If so, we recommend you first deploy Assured Workloads using [this repository],(https://github.com/GoogleCloudPlatform/assured-workloads-terraform) allowing you to maintain your regulatory and compliance requirements, before running these labs.
+
+Note that unsupported products are not recommended for use by Assured Workloads customers without due diligence and waivers from your regulatory agencies or divisions.
+
 ## Walkthrough
 
 > [!NOTE]
