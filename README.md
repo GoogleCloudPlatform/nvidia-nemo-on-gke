@@ -89,6 +89,13 @@ The logical flow of the walkthrough consists of below steps:
 
 As the walkthrough depends on the availability of NVIDIA H100 GPUs accessible as A3 machines on Google Cloud, it is important you have access to them. In certain instances, submitting a request to ensure the allocation of quotas to your project is a necessary prerequisite. [Submit quota request](https://cloud.google.com/docs/quota/view-manage#requesting_higher_quota) for [GPU Quota](https://cloud.google.com/compute/resource-usage#gpu_quota) named `NVIDIA_H100_GPUS`
 
+### Enabling AI Infrastructure for Regulated Organizations
+
+Google Cloud’s [Assured Workloads](https://cloud.google.com/security/products/assured-workloads?e=48754805&hl=en) helps ensure that regulated organizations across the public and private sector can accelerate AI innovation while meeting their compliance and security requirements. Assured Workloads provides control packages to support the creation of compliant boundaries in Google Cloud. A control package is a set of controls that, when combined together, supports the regulatory baseline for a compliance statute or regulation. These controls include mechanisms to enforce data residency, data sovereignty, personnel access, and more.
+
+We encourage you to evaluate Assured Workloads' [control packages](https://cloud.google.com/assured-workloads/docs/control-packages) and decide whether a control package is required for your organization to meet their regulatory and compliance requirements. If so, we recommend you first deploy Assured Workloads using [this repository],(https://github.com/GoogleCloudPlatform/assured-workloads-terraform) allowing you to maintain your regulatory and compliance requirements, before running these labs.
+
+Note that unsupported products are not recommended for use by Assured Workloads customers without due diligence and waivers from your regulatory agencies or divisions.
 ### Software Requirements
 
 The following CLI tools are required in order to complete the walkthrough in your Google Cloud project:
