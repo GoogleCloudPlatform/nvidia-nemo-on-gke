@@ -51,6 +51,8 @@ locals {
       [],
     ),
   )
+
+  labels = {}
 }
 
 data "http" "gce-gke-gpu-utilization" {
@@ -88,4 +90,5 @@ module "dashboard" {
   project_id      = var.project_id
   title           = "AI Accelerator Experience Dashboard"
   widgets         = local.widgets
+  labels          = local.labels
 }

@@ -57,7 +57,6 @@ Below list shows the GPUs supported in GKE. The detailed list is available [here
 | 1. | [H100](<https://www.nvidia.com/en-us/data-center/h100/>) <sup>1</sup> | [A3](https://cloud.google.com/compute/docs/accelerator-optimized-machines#a3-vms) | `a3-highgpu-8g` | 8 | 208 | 1872 |
 | 2. | [A100](https://www.nvidia.com/en-us/data-center/a100/) | [A2 standard](https://cloud.google.com/compute/docs/accelerator-optimized-machines#a2-standard-vms) | `a2-highgpu-1g` - `a2-highgpu-8g` <br> `a2-megagpu-16g` | 1-16 | 12-96 | 85-1360 |
 | 3. | [A100](https://www.nvidia.com/en-us/data-center/a100/) | [A2 ultra 80GB](https://cloud.google.com/compute/docs/accelerator-optimized-machines#a2-ultra-vms) | `a2-ultragpu-1g` - `a2-ultragpu-8g`| 1-8 | 12-96 | 170-1360 |
-| 4. | [L4](https://www.nvidia.com/en-us/data-center/l4/) | [G2](https://cloud.google.com/compute/docs/accelerator-optimized-machines#g2-standard-vms) | `g2-standard-4` - `g2-standard-96`| 1-8 | 4-96 | 16-384 |
 
 [1] The walkthrough below will need access to A3 VMs.
 
