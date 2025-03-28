@@ -92,9 +92,10 @@ As the walkthrough depends on the availability of NVIDIA H100 GPUs accessible as
 
 Google Cloud’s [Assured Workloads](https://cloud.google.com/security/products/assured-workloads?e=48754805&hl=en) helps ensure that regulated organizations across the public and private sector can accelerate AI innovation while meeting their compliance and security requirements. Assured Workloads provides control packages to support the creation of compliant boundaries in Google Cloud. A control package is a set of controls that, when combined together, supports the regulatory baseline for a compliance statute or regulation. These controls include mechanisms to enforce data residency, data sovereignty, personnel access, and more.
 
-We encourage you to evaluate Assured Workloads' [control packages](https://cloud.google.com/assured-workloads/docs/control-packages) and decide whether a control package is required for your organization to meet their regulatory and compliance requirements. If so, we recommend you first deploy Assured Workloads using [this repository],(https://github.com/GoogleCloudPlatform/assured-workloads-terraform) allowing you to maintain your regulatory and compliance requirements, before running these labs.
+We encourage you to evaluate Assured Workloads' [control packages](https://cloud.google.com/assured-workloads/docs/control-packages) and decide whether a control package is required for your organization to meet their regulatory and compliance requirements. If so, we recommend you first deploy Assured Workloads using [this repository],(<https://github.com/GoogleCloudPlatform/assured-workloads-terraform>) allowing you to maintain your regulatory and compliance requirements, before running these labs.
 
 Note that unsupported products are not recommended for use by Assured Workloads customers without due diligence and waivers from your regulatory agencies or divisions.
+
 ### Software Requirements
 
 The following CLI tools are required in order to complete the walkthrough in your Google Cloud project:
@@ -293,7 +294,7 @@ Below are the details of dataset used for training.
 
 #### Training Image
 
-The latest NVIDIA NeMo Framework Training image available at [NGC Catalog](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/nemo) is used. At the time of this publishing, the current version is `nvcr.io/nvidia/nemo:23.11.framework`
+The latest NVIDIA NeMo Framework Training image available at [NGC Catalog](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/nemo) is used. The current version is `nvcr.io/nvidia/nemo:25.02`
 
 #### Configure model parameters
 
@@ -311,7 +312,7 @@ Launch the GPT model training across the desired nodes
   | Variable | Description | Default | Need update? |
   |---|---|---|---|
   | `workload.gpus` | Total number of GPUs | `16` | *Optional* |
-  | `workload.image` | Image version for NeMo training | `nvcr.io/nvidia/nemo:23.11.framework` | *Optional* |
+  | `workload.image` | Image version for NeMo training | `nvcr.io/nvidia/nemo:25.02` | *Optional* |
   | `queue` | LocalQueue name that submits to ClusterQueue | `a3-queue` | *a3-queue* |
 
   Launch Helm workload
@@ -319,7 +320,7 @@ Launch the GPT model training across the desired nodes
   ```console
   cd nemo-example/
   helm install --set workload.gpus=16 \
-  --set workload.image=nvcr.io/nvidia/nemo:23.11.framework \
+  --set workload.image=nvcr.io/nvidia/nemo:25.02 \
   --set queue=a3-queue \
   $USER-nemo-$(date +%s) .
   ```
@@ -330,7 +331,7 @@ Alternatively, you can launch training using terraform
 
   | Variable | Description | Default | Need update? |
   |---|---|---|---|
-  | `training_image_name` | NVIDIA NeMo Framework Image | `nvcr.io/nvidia/nemo:23.11.framework` | *Optional* |
+  | `training_image_name` | NVIDIA NeMo Framework Image | `nnvcr.io/vidia/nemo:25.02` | *Optional* |
   | `kueue_name` | LocalQueue name that submits to ClusterQueue | `a3-queue` | *Optional* |
 
   Save changes in the `terraform.auto.tfvars` file

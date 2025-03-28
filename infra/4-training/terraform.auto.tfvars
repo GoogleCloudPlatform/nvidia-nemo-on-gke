@@ -14,5 +14,6 @@
  limitations under the License.
  */
 
-training_image_name = "nvcr.io/nvidia/nemo:23.11.framework"
+# updated 03/28/2025
+training_image_name = "nvcr.io/nvidia/nemo:25.02"
 kueue_name          = "a3-queue"
