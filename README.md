@@ -139,11 +139,19 @@ The bootstrap phase initializes the Google Cloud project and terraform environme
 
 3. Configure environment per requirements in [terraform.auto.tfvars](./infra/1-bootstrap/terraform.auto.tfvars)
 
-    | Variable | Description | Default | Need update? |
+    | Variable | Description | Default | Required |
     |---|---|---|---|
-    | `project_id` | Google Project ID | <> | *Yes* |
-    | `tf_state_bucket.name` | GCS Bucket for terraform state management | <> | *Yes* |
-    | `tf_state_bucket.location` | GCP Region | <> | *Yes* |
+    | `project_id` | The GCP project ID | <> | *Yes* |
+    | `tf_state_bucket.name` | Name of the GCS bucket for terraform state management | <> | *Yes* |
+    | `tf_state_bucket.location` | GCP region for the state bucket | <> | *Yes* |
+    | `services` | Additional services to enable | `["container.googleapis.com"]` | *No* |
+    | `deletion_protection` | Prevents accidental deletion of resources | `true` | *No* |
+    | `project_reuse` | Configuration for reusing existing project | `null` | *No* |
+    | `project_reuse.use_data_source` | Whether to use data source for project info | `true` | *No* |
+    | `project_reuse.project_attributes` | Project attributes if not using data source | `null` | *No* |
+    | `project_reuse.project_attributes.name` | Name of existing project | <> | *Yes* if using project_attributes |
+    | `project_reuse.project_attributes.number` | Project number | <> | *Yes* if using project_attributes |
+    | `project_reuse.project_attributes.services_enabled` | List of enabled services | `[]` | *No* |
 
     Save changes in the `terraform.auto.tfvars` file
 

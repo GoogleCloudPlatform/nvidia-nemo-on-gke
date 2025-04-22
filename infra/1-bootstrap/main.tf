@@ -20,4 +20,5 @@ module "bootstrap" {
   tf_state_bucket     = var.tf_state_bucket
   services            = var.services
   deletion_protection = var.deletion_protection
+  project_reuse       = var.project_reuse
 }

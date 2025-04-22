@@ -20,6 +20,26 @@ variable "project_id" {
   nullable    = false
 }
 
+variable "project_reuse" {
+  description = "Reuse existing project if not null. If name and number are not passed in, a data source is used."
+  type = object({
+    use_data_source = optional(bool, true)
+    project_attributes = optional(object({
+      name             = string
+      number           = number
+      services_enabled = optional(list(string), [])
+    }))
+  })
+  default = null
+  validation {
+    condition = (
+      try(var.project_reuse.use_data_source, null) != false ||
+      try(var.project_reuse.project_attributes, null) != null
+    )
+    error_message = "Reuse datasource can be disabled only if project attributes are set."
+  }
+}
+
 variable "tf_state_bucket" {
   description = "The GCS bucket to hold the terraform backend state"
   type = object({
