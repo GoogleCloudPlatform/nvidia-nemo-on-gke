@@ -186,7 +186,7 @@ The Cluster setup provisions:
     |---|---|---|---|
     | `is_zonal` | Flag to determine if the cluster will be zonal or regional | `true` | *Optional* |
     | `cluster_prefix` | GKE Cluster name / prefix | `gke-demo-2024-1` | *Yes* |
-    | `gke_version` | GKE version | `1.27.8-gke.1067004` | *Optional* |
+    | `gke_version` | GKE version | `1.32.2-gke.1182003` | *Optional* |
     | `nodepool_default_count` | Number of nodes for default node pool | `1` | *Optional* |
     | `nodepool_default_type` | Instance type for default node pool | `e2-medium-2` | *Optional* |
     | `node_count` | Number of GPU nodes in Node pool | `1` | *Yes* |
