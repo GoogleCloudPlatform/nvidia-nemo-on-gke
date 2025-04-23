@@ -14,9 +14,8 @@
  limitations under the License.
  */
 
-zone       = "<GCP Zone>"
-cluster_prefix         = "<GKE Cluster name>"
-gke_version = "1.27.16-gke.1008000"
+cluster_prefix = "<GKE Cluster name>"
+gke_version    = "1.27.16-gke.1008000"
 
 node_count             = 1
 nodepool_default_count = 1

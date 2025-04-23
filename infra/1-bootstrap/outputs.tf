@@ -19,9 +19,19 @@ output "tf_state_bucket" {
   value       = module.bootstrap.tf_state_bucket
 }
 
+output "location" {
+  description = "GCS location"
+  value = var.location
+}
+
 output "region" {
-  description = "GCS Bucket region"
-  value = var.tf_state_bucket.location
+  description = "GCS region"
+  value = var.region
+}
+
+output "zone" {
+  description = "GCS zone"
+  value = var.zone
 }
 
 output "project_id" {

@@ -28,31 +28,32 @@ data "google_project" "current" {
 
 locals {
   project_id = data.google_project.current.project_id
-  region = data.terraform_remote_state.bootstrap.outputs.region
-  is_zonal    = var.zone != null ? true : false
-}
+  region     = data.terraform_remote_state.bootstrap.outputs.region
+  zone       = data.terraform_remote_state.bootstrap.outputs.zone
+  location   = data.terraform_remote_state.bootstrap.outputs.location
+  }
 
 module "a3-gke" {
   source = "../terraform/modules/a3/cluster/gke"
 
   project_id = local.project_id
-  region      = local.region
-  zone        = var.zone
+  region     = local.region
+  zone       = local.zone
 
-  resource_prefix = var.cluster_prefix
-  gke_version = var.gke_version
+  resource_prefix      = var.cluster_prefix
+  gke_version          = var.gke_version
   enable_gke_dashboard = true
 
   node_pools = [
     {
-      zone         = local.is_zonal == true ? var.zone : local.region
+      zone         = var.is_zonal == true ? local.zone : local.region
       machine_type = var.node_type
       node_count   = var.node_count
     }
   ]
 
   default_node_pool = {
-    zone         = local.is_zonal == true ? var.zone : local.region
+    zone         = var.is_zonal == true ? local.zone : local.region
     machine_type = var.nodepool_default_type
     node_count   = var.nodepool_default_count
   }

@@ -90,7 +90,7 @@ As the walkthrough depends on the availability of NVIDIA H100 GPUs accessible as
 
 ### Enabling AI Infrastructure for Regulated Organizations
 
-Google Cloud’s [Assured Workloads](https://cloud.google.com/security/products/assured-workloads?e=48754805&hl=en) helps ensure that regulated organizations across the public and private sector can accelerate AI innovation while meeting their compliance and security requirements. Assured Workloads provides control packages to support the creation of compliant boundaries in Google Cloud. A control package is a set of controls that, when combined together, supports the regulatory baseline for a compliance statute or regulation. These controls include mechanisms to enforce data residency, data sovereignty, personnel access, and more.
+Google Cloud's [Assured Workloads](https://cloud.google.com/security/products/assured-workloads?e=48754805&hl=en) helps ensure that regulated organizations across the public and private sector can accelerate AI innovation while meeting their compliance and security requirements. Assured Workloads provides control packages to support the creation of compliant boundaries in Google Cloud. A control package is a set of controls that, when combined together, supports the regulatory baseline for a compliance statute or regulation. These controls include mechanisms to enforce data residency, data sovereignty, personnel access, and more.
 
 We encourage you to evaluate Assured Workloads' [control packages](https://cloud.google.com/assured-workloads/docs/control-packages) and decide whether a control package is required for your organization to meet their regulatory and compliance requirements. If so, we recommend you first deploy Assured Workloads using [this repository],(<https://github.com/GoogleCloudPlatform/assured-workloads-terraform>) allowing you to maintain your regulatory and compliance requirements, before running these labs.
 
@@ -142,8 +142,10 @@ The bootstrap phase initializes the Google Cloud project and terraform environme
     | Variable | Description | Default | Required |
     |---|---|---|---|
     | `project_id` | The GCP project ID | <> | *Yes* |
-    | `tf_state_bucket.name` | Name of the GCS bucket for terraform state management | <> | *Yes* |
-    | `tf_state_bucket.location` | GCP region for the state bucket | <> | *Yes* |
+    | `location` | The GCP location | <> | *Yes* |
+    | `region` | The GCP region | <> | *Yes* |
+    | `zone` | The GCP zone | <> | *Yes* |
+    | `tf_state_bucket_name` | Name of the GCS bucket for terraform state management | <> | *Yes* |
     | `services` | Additional services to enable | `["container.googleapis.com"]` | *No* |
     | `deletion_protection` | Prevents accidental deletion of resources | `true` | *No* |
     | `project_reuse` | Configuration for reusing existing project | `null` | *No* |
@@ -180,14 +182,15 @@ The Cluster setup provisions:
 
 1. Configure Cluster per requirements in [terraform.auto.tfvars](./infra/2-setup/terraform.auto.tfvars)
 
-    | Variable | Description | Default | Need update? |
+    | Variable | Description | Default | Required |
     |---|---|---|---|
-    | `zone` | GCP zone within region to provision resources | <> | *Yes* |
-    | `cluster_prefix` | Name of GKE Cluster | `gke-nemo-dev` | *Yes* |
-    | `gke_version` | Stable GKE version | `1.27.8-gke.1067004` | *Optional* |
-    | `node_count` | Number of nodes in Managed node pool | 2 | *Yes* |
-    | `node_default_count` | Number of nodes in Default node pool | 1 | *Optional* |
-    | `node_default_type` | Machine type | `e2-standard-4` | *Optional* |
+    | `is_zonal` | Flag to determine if the cluster will be zonal or regional | `true` | *Optional* |
+    | `cluster_prefix` | GKE Cluster name / prefix | `gke-demo-2024-1` | *Yes* |
+    | `gke_version` | GKE version | `1.27.8-gke.1067004` | *Optional* |
+    | `nodepool_default_count` | Number of nodes for default node pool | `1` | *Optional* |
+    | `nodepool_default_type` | Instance type for default node pool | `e2-medium-2` | *Optional* |
+    | `node_count` | Number of GPU nodes in Node pool | `1` | *Yes* |
+    | `node_type` | Instance type | `a3-highgpu-8g` | *Yes* |
 
     Save changes in the `terraform.auto.tfvars` file
 

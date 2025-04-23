@@ -19,6 +19,21 @@ variable "project_id" {
   type        = string
 }
 
+variable "location" {
+  description = "The GCP location"
+  type        = string
+}
+
+variable "region" {
+  description = "The GCP region"
+  type        = string
+}
+
+variable "zone" {
+  description = "The GCP zone"
+  type        = string
+}
+
 variable "project_reuse" {
   description = "Reuse existing project if not null. If name and number are not passed in, a data source is used."
   type = object({
@@ -39,12 +54,9 @@ variable "project_reuse" {
   }
 }
 
-variable "tf_state_bucket" {
-  description = "The parameters of the bucket to be used by automation tools including Terraform backend"
-  type = object({
-    name     = string
-    location = string
-  })
+variable "tf_state_bucket_name" {
+  description = "The name of the bucket to be used by automation tools including Terraform backend"
+  type        = string
 }
 
 variable "services" {
