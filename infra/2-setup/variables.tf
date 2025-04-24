@@ -14,15 +14,9 @@
  limitations under the License.
  */
 
-variable "zone" {
-  type        = string
-  description = "GCP zone within a region where resources will be deployed"
-  nullable    = true
-}
-
 variable "is_zonal" {
   type        = bool
-  description = "FLag to determine if the cluster will be a zonal or regiona"
+  description = "FLag to determine if the cluster will be a zonal or regional"
   nullable    = false
   default     = true
 }

@@ -17,7 +17,11 @@
 module "bootstrap" {
   source              = "../terraform/modules/bootstrap"
   project_id          = var.project_id
-  tf_state_bucket     = var.tf_state_bucket
+  tf_state_bucket     = {
+    name     = var.tf_state_bucket_name
+    location = var.location
+  }
   services            = var.services
   deletion_protection = var.deletion_protection
+  project_reuse       = var.project_reuse
 }

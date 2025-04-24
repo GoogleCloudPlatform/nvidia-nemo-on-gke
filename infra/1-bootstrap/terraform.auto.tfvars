@@ -14,11 +14,9 @@
  limitations under the License.
  */
 
-project_id = "<GCP Project ID>"
-
-tf_state_bucket = {
-  name     = "<GCS Bucket for terraform state mgmt>"
-  location = "<GCP Region>"
-}
-
-deletion_protection = true
+project_id           = "<GCP Project ID>"
+location             = "<GCP Location>"
+region               = "<GCP Region>"
+zone                 = "<GCP Zone>"
+tf_state_bucket_name = "<GCS Bucket for terraform state mgmt>"
+deletion_protection  = true

@@ -37,10 +37,10 @@ locals {
 }
 
 module "project_config" {
-  source         = "github.com/GoogleCloudPlatform/cloud-foundation-fabric//modules/project?ref=v38.1.0&depth=1"
-  name           = var.project_id
-  project_create = false
-  services       = local.services
+  source        = "github.com/GoogleCloudPlatform/cloud-foundation-fabric//modules/project?ref=v38.1.0&depth=1"
+  name          = var.project_id
+  services      = local.services
+  project_reuse = var.project_reuse
 }
 
 module "tf_state_backend" {
